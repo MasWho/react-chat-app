@@ -8,6 +8,12 @@ function App() {
   useEffect(() => {
     const newSocket = io(`http://${window.location.hostname}:8000`);
     setSocket(newSocket);
+
+    // Setup socket event listener
+    newSocket.on('message', (message) => {
+      console.log(message);
+    });
+
     return () => newSocket.close();
   }, []);
 
