@@ -14,9 +14,12 @@ const io = socketio(server, {
 const port = process.env.PORT || 8000;
 
 io.on('connection', (socket) => {
-  console.log('New Connection!');
-
   socket.emit('message', 'Welcome');
+  
+  // Forward message to all connected clients
+  socket.on('sendMessage', (message) => {
+    io.emit('message', message);
+  });
 });
 
 server.listen(port, () => {
