@@ -13,8 +13,11 @@ const io = socketio(server, {
 
 const port = process.env.PORT || 8000;
 
-io.on('connection', () => {
+io.on('connection', (socket) => {
   console.log('New Connection!');
+  socket.on('message', (message) => {
+    socket.broadcast.emit('message-for-all', message);
+  });
 });
 
 server.listen(port, () => {
