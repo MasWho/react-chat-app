@@ -1,7 +1,10 @@
-const Message = ({body}) => {
+import moment from 'moment';
+
+const Message = ({body, time}) => {
+  time = moment(time).format('h:mm a');
   return (
     <div>
-      <p>{body}</p>
+      <p>{time} - {body}</p>
     </div>
   );
 };
