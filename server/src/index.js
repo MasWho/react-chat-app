@@ -21,8 +21,14 @@ io.on('connection', (socket) => {
   socket.broadcast.emit('message', 'A new user joined!');
   
   // Forward message to all connected clients
-  socket.on('sendMessage', (message) => {
-    io.emit('message', message);
+  // NOTE: implement event acknoledgement with callback in callback
+  socket.on('sendMessage', (message, callback) => {
+    try {
+      io.emit('message', message);
+      callback();
+    } catch (error) {
+      callback(error.message);
+    }
   });
 
   // This is built-in socket.io event, all other clients should get message that current client disconnected

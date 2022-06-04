@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from 'react';
 
 function App() {
   const [socket, setSocket] = useState(null);
+  const [sending, setSending] = useState(false);
   const messageRef = useRef('');
 
   useEffect(() => {
@@ -20,8 +21,18 @@ function App() {
 
   const sendMessageHandler = (event) => {
     event.preventDefault();
-    socket.emit('sendMessage', messageRef.current.value);
-    messageRef.current.value = '';
+    setSending(true);
+    socket.emit('sendMessage', messageRef.current.value, (error) => {
+      setSending(false);
+      messageRef.current.value = '';  // Clear message
+      messageRef.current.focus();  // Focus input
+      
+      if(error) {
+        console.log(error);
+      } else {
+        console.log('Message Sent!');
+      }
+    });
   };
 
   return (
@@ -31,7 +42,7 @@ function App() {
           <label htmlFor='message-input'>Message</label>
           <input id="message-input" type="text" placeholder='Send Message' ref={messageRef} />
         </div>
-        <button className={styles.submitButton} type='submit'>Send</button>
+        <button className={styles.submitButton} type='submit' disabled={sending}>Send</button>
       </form>
     </div>
   );
