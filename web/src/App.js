@@ -1,10 +1,12 @@
 import styles from './styles/App.module.css';
 import io from 'socket.io-client';
 import {useEffect, useRef, useState} from 'react';
+import Message from './components/Message';
 
 function App() {
   const [socket, setSocket] = useState(null);
   const [sending, setSending] = useState(false);
+  const [allMessages, setAllMessages] = useState([]);
   const messageRef = useRef('');
 
   useEffect(() => {
@@ -13,7 +15,7 @@ function App() {
 
     // Setup socket event listener
     newSocket.on('message', (message) => {
-      console.log(message);
+      setAllMessages(prevState => [...prevState, message]);
     });
 
     return () => newSocket.close();
@@ -44,6 +46,12 @@ function App() {
         </div>
         <button className={styles.submitButton} type='submit' disabled={sending}>Send</button>
       </form>
+      {/* Place to render all messages */}
+      <div>
+        {
+          allMessages.map((message, idx) => <Message key={`msg-${idx}`} body={message} />)
+        }
+      </div>
     </div>
   );
 }
