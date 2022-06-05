@@ -1,0 +1,32 @@
+input {
+  font-size: 14px;
+  border: 1px solid #eeeeee;
+  padding: 12px;
+  outline: none;
+}
+
+h1 {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: #777;
+}
+
+button {
+  cursor: pointer;
+  padding: 12px;
+  background: #7C5CBF;
+  border: none;
+  color: white;
+  font-size: 16px;
+  transition: background .3s ease;
+}
+
+button:disabled {
+  cursor: default;
+  background: #7c5cbf94;
+}
