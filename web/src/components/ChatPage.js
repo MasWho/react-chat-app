@@ -1,10 +1,14 @@
 import { useState, useRef, useEffect } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import {io} from 'socket.io-client';
 
 import styles from '../styles/ChatPage.module.css';
 import Message from './Message';
 
 const ChatPage = () => {
+  const [searchParams] = useSearchParams();
+  const [username, setUsername] = useState(searchParams.get('username'));
+  const [room, setRoom] = useState(searchParams.get('room'));
   const [socket, setSocket] = useState(null);
   const [sending, setSending] = useState(false);
   const [allMessages, setAllMessages] = useState([]);
@@ -40,6 +44,7 @@ const ChatPage = () => {
 
   // Messages to be rendered
   const messages =  allMessages.map((message, idx) => <Message
+    user={username}
     key={`msg-${idx}`}
     body={message.text}
     time={message.createdAt}
