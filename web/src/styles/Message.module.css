@@ -1,0 +1,20 @@
+/* Message Styles */
+
+.Message {
+  margin-bottom: 16px;   
+}
+
+.MessageName {
+  font-weight: 600;
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.MessageMeta {
+  color: #777;
+  font-size: 14px;
+}
+
+.Message a {
+  color: #0070CC;
+}

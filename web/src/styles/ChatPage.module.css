@@ -1,0 +1,77 @@
+.ChatPage {
+  display: flex;
+}
+
+/* Chat Page Layout */
+
+.ChatSidebar {
+  height: 100vh;
+  color: white;
+  background: #333744;
+  width: 225px;
+  overflow-y: scroll
+}
+
+/* Chat styles */
+
+.ChatMain {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+.ChatMessages {
+  flex-grow: 1;
+  padding: 24px 24px 0 24px;
+  overflow-y: scroll;
+}
+
+/* Message Composition Styles */
+
+.Compose {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 16px;
+  padding: 24px;
+}
+
+.Compose form {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 16px;
+}
+
+.Compose input {
+  border: 1px solid #eeeeee;
+  width: 100%;
+  padding: 12px;
+  margin: 0 16px 0 0;
+  flex-grow: 1;
+}
+
+.Compose button {
+  font-size: 14px;
+}
+
+/* Chat Sidebar Styles */
+
+.RoomTitle {
+  font-weight: 400;
+  font-size: 22px;
+  background: #2c2f3a;
+  padding: 24px;   
+}
+
+.ListTitle {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 4px;
+  padding: 12px 24px 0 24px;
+}
+
+.Users {
+  list-style-type: none;
+  font-weight: 300;
+  padding: 12px 24px 0 24px;
+}

@@ -1,0 +1,26 @@
+/* Join Page Styles */
+
+.CenteredForm {
+  background: #333744;
+  width: 100vw;
+  height: 100vh;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CenteredFormBox {
+  box-shadow: 0px 0px 17px 1px #1D1F26;
+  background: #F7F7FA;
+  padding: 24px;
+  width: 250px;
+}
+
+.CenteredForm button {
+  width: 100%;
+}
+
+.CenteredForm input {
+  margin-bottom: 16px;
+  width: 90%;
+}
