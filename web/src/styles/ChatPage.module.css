@@ -53,3 +53,25 @@
 .Compose button {
   font-size: 14px;
 }
+
+/* Chat Sidebar Styles */
+
+.RoomTitle {
+  font-weight: 400;
+  font-size: 22px;
+  background: #2c2f3a;
+  padding: 24px;   
+}
+
+.ListTitle {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 4px;
+  padding: 12px 24px 0 24px;
+}
+
+.Users {
+  list-style-type: none;
+  font-weight: 300;
+  padding: 12px 24px 0 24px;
+}
