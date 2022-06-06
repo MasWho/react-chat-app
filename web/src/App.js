@@ -1,5 +1,6 @@
-import './styles/global.css';
 import { Routes, Route } from 'react-router-dom';
+
+import './styles/global.css';
 import ChatPage from './components/ChatPage';
 import JoinPage from './components/JoinPage';
 

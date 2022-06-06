@@ -1,3 +1,4 @@
+// util for generating a template message object
 const generateMessage = (user, text) => {
   return {
     text,

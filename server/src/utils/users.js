@@ -1,6 +1,7 @@
+// In memory user store managing connected users/clients
+// Not suitable for production builds but enough for demonstration
 const users = [];
 
-// addUser
 const addUser = ({socketId, username, room}) => {
   // Clean the data
   username = username.trim().toLowerCase();
@@ -30,9 +31,8 @@ const addUser = ({socketId, username, room}) => {
 
   users.push(user);
   return { user };
-}
+};
 
-// removeUser
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);
 
@@ -41,13 +41,11 @@ const removeUser = (id) => {
   }
 };
 
-// getUser
 const getUser = (id) => {
   const user = users.find((user) => user.id === id);
   return user;
 };
 
-// getUsersInRoom
 const getUsersInRoom = (room) => {
   const usersInRoom = users.filter(user => user.room === room);
   return usersInRoom;

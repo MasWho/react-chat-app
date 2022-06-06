@@ -1,10 +1,10 @@
 import moment from 'moment';
+
 import styles from '../styles/Message.module.css';
 
 const Message = ({body, time, user}) => {
 
   time = moment(time).format('h:mm a');
-
   return (
     <div className={styles.Message}>
       <p>
