@@ -1,8 +1,8 @@
+/* Chat Page Layout */
+
 .ChatPage {
   display: flex;
 }
-
-/* Chat Page Layout */
 
 .ChatSidebar {
   height: 100vh;

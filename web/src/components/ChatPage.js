@@ -34,12 +34,14 @@ const ChatPage = () => {
     });
 
     // listen for any room info updates coming from the connected server
-    newSocket.on("roomData", ({room, users}) => {
+    newSocket.on("roomData", ({users}) => {
       setAllUsers([...users]);
     });
 
+    // Close the socket when user leaves the page
     return () => newSocket.close();
   }, [searchParams, error]);
+
 
   const sendMessageHandler = (event) => {
     event.preventDefault();
@@ -58,6 +60,7 @@ const ChatPage = () => {
     });
   };
 
+  
   // Messages to be rendered
   const messages = allMessages.map((message, idx) => <Message
     user={message.user}
@@ -66,7 +69,12 @@ const ChatPage = () => {
     time={message.createdAt}
   />);
 
-  const users = allUsers.map((user, idx) => <li key={`user-${idx}`}>{user.username}</li>);
+  const users = allUsers.map((user, idx) => (
+      <li key={`user-${idx}`}>
+        {user.username}
+      </li>
+    )
+  );
 
   return (
     <div className={styles.ChatPage}>
