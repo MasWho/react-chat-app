@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
     }
 
     // Once a socket joins a room, then we can emit events to that room only
-    // io.to(room).emit     or     socket.broadcast.to(room).emit
+    // io.to(room).emit or socket.broadcast.to(room).emit
     socket.join(user.room);
     
     socket.emit('message', generateMessage('Admin', `Welcome ${user.username}!`));
