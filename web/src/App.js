@@ -1,13 +1,14 @@
-import styles from './styles/App.module.css';
 import io from 'socket.io-client';
 import {useEffect, useRef, useState} from 'react';
+
+const SERVER_URL = `http://${window.location.hostname}:8000`;
 
 function App() {
   const [socket, setSocket] = useState(null);
   const messageRef = useRef('');
 
   useEffect(() => {
-    const newSocket = io(`http://${window.location.hostname}:8000`);
+    const newSocket = io(SERVER_URL);
     setSocket(newSocket);
 
     // Setup socket event listener
@@ -25,13 +26,10 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <form className={styles.messageForm} onSubmit={sendMessageHandler}>
-        <div className={styles.messageInput}>
-          <label htmlFor='message-input'>Message</label>
-          <input id="message-input" type="text" placeholder='Send Message' ref={messageRef} />
-        </div>
-        <button className={styles.submitButton} type='submit'>Send</button>
+    <div className="App" style={{padding: '20px'}}>
+      <form onSubmit={sendMessageHandler}>
+        <input type="text" placeholder='Send Message' ref={messageRef} />
+        <button type='submit'>Send</button>
       </form>
     </div>
   );
