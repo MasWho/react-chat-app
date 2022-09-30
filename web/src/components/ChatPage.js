@@ -33,6 +33,10 @@ const ChatPage = () => {
       setAllMessages((prevState) => [...prevState, message]);
     });
 
+    newSocket.on("message-load", messages => {
+      setAllMessages(prevState => [...messages]);
+    })
+
     // listen for any room info updates coming from the connected server
     newSocket.on("roomData", ({users}) => {
       setAllUsers([...users]);
